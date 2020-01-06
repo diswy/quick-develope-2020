@@ -55,6 +55,7 @@ dependencies {
     api "androidx.room:room-ktx:$rootProject.roomVersion"
     api "androidx.room:room-rxjava2:$rootProject.roomVersion"
     api "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    api "pub.devrel:easypermissions:$rootProject.easypermissionsVersion"
 
     kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
     kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"

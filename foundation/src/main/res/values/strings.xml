@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Foundation</string>
+    <string name="title_settings_dialog">权限请求</string>
+    <string name="rationale_ask_again">改中文试试</string>
 </resources>
