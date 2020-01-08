@@ -1,11 +1,11 @@
 package com.diswy.quick
 
-import com.diswy.common.di.AppModule
+import com.diswy.common.di.AppComponent
+import com.diswy.foundation.di.ano.ActivityScope
 import dagger.Component
-import javax.inject.Singleton
 
-@Singleton
-@Component(modules = [AppModule::class])
+@ActivityScope
+@Component(dependencies = [AppComponent::class])
 interface ActivityComponent {
     fun inject(activity: MainActivity)
 }

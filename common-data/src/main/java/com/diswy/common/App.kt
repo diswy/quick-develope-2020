@@ -2,6 +2,7 @@ package com.diswy.common
 
 import android.app.Application
 import androidx.lifecycle.ViewModelProvider
+import com.diswy.common.di.AppComponent
 import com.diswy.common.di.DaggerAppComponent
 import javax.inject.Inject
 
@@ -11,7 +12,8 @@ class App : Application() {
         lateinit var instance: App
             private set
 
-
+        lateinit var appComponent: AppComponent
+            private set
     }
 
     @Inject
@@ -20,6 +22,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        DaggerAppComponent.builder().application(this).build().inject(this)
+        appComponent = DaggerAppComponent.builder().application(this).build()
+        appComponent.inject(this)
     }
 }

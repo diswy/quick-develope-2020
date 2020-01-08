@@ -1,14 +1,12 @@
 package com.diswy.common.di
 
 import com.diswy.common.App
-import com.diswy.common.di.viewmodel.ViewModelModule
-import com.diswy.foundation.di.HelperModule
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Module(includes = [ViewModelModule::class, HelperModule::class])
+@Module(includes = [ViewModelModule::class])
 class AppModule {
 
     @Provides

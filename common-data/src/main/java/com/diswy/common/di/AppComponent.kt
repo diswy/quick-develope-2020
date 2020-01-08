@@ -2,6 +2,8 @@ package com.diswy.common.di
 
 import android.app.Application
 import com.diswy.common.App
+import com.diswy.foundation.tools.UpdateHelper
+import com.google.gson.Gson
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -18,4 +20,10 @@ interface AppComponent {
 
         fun build(): AppComponent
     }
+
+    fun provideApp(): App
+
+    fun provideGson(): Gson
+
+    fun provideUpdateHelper(): UpdateHelper
 }

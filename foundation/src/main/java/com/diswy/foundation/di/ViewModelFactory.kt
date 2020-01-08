@@ -1,4 +1,4 @@
-package com.diswy.common.di.viewmodel
+package com.diswy.foundation.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
