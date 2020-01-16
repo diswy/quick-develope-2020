@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.lifecycle.ViewModelProvider
 import com.diswy.common.di.AppComponent
 import com.diswy.common.di.DaggerAppComponent
+import timber.log.Timber
+import timber.log.Timber.DebugTree
 import javax.inject.Inject
 
 class App : Application() {
@@ -24,5 +26,8 @@ class App : Application() {
         instance = this
         appComponent = DaggerAppComponent.builder().application(this).build()
         appComponent.inject(this)
+        if (BuildConfig.DEBUG) {
+            Timber.plant(DebugTree())
+        }
     }
 }

@@ -1,10 +1,13 @@
 package com.diswy.foundation.base.activity
 
+import android.Manifest
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.diswy.foundation.R
+import com.diswy.foundation.base.Permission
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
@@ -76,6 +79,7 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
         bindListener()
     }
 
+    /****************权限管理****************/
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -92,5 +96,40 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
     }
 
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {}
+
+    protected fun hasCameraPermission(): Boolean {
+        if (!EasyPermissions.hasPermissions(this, Manifest.permission.CAMERA)) {
+            EasyPermissions.requestPermissions(
+                this,
+                getString(R.string.request_camera_permission),
+                Permission.RC_CAMERA_PERM,
+                Manifest.permission.CAMERA
+            )
+        }
+        return EasyPermissions.hasPermissions(this, Manifest.permission.CAMERA)
+    }
+
+    protected fun hasStoragePermission(): Boolean {
+        if (!EasyPermissions.hasPermissions(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+        ) {
+            EasyPermissions.requestPermissions(
+                this,
+                getString(R.string.request_storage_permission),
+                Permission.RC_STORAGE_PERM,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+        }
+        return EasyPermissions.hasPermissions(
+            this,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+    }
+    /****************权限管理****************/
 
 }

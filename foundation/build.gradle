@@ -46,6 +46,7 @@ dependencies {
     api "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
     api "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+    api "androidx.lifecycle:lifecycle-reactivestreams-ktx:$rootProject.lifecycleVersion"
     api "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
     api "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     api "com.google.dagger:dagger:$rootProject.daggerVersion"
@@ -56,6 +57,7 @@ dependencies {
     api "androidx.room:room-rxjava2:$rootProject.roomVersion"
     api "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     api "pub.devrel:easypermissions:$rootProject.easypermissionsVersion"
+    api "com.jakewharton.timber:timber:$rootProject.timberVersion"
 
     kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
     kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"

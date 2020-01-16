@@ -25,6 +25,7 @@ buildscript {
         rxAndroidVersion = '2.1.1'
         retrofitVersion = '2.7.1'
         easypermissionsVersion = '3.0.0'
+        timberVersion = '4.7.1'
     }
 
     repositories {

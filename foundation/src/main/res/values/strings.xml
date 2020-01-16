@@ -5,4 +5,6 @@
         没有所请求的权限，此应用可能无法正常运行。
         打开应用程序设置以修改应用程序权限。
     </string>
+    <string name="request_camera_permission">此应用需要使用相机权限</string>
+    <string name="request_storage_permission">此应用需要使用存储卡权限</string>
 </resources>

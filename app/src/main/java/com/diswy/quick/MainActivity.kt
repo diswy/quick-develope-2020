@@ -1,6 +1,5 @@
 package com.diswy.quick
 
-import android.Manifest
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -11,7 +10,7 @@ import com.diswy.foundation.base.activity.BaseActivity
 import com.diswy.foundation.tools.UpdateHelper
 import com.google.gson.Gson
 import pub.devrel.easypermissions.AfterPermissionGranted
-import pub.devrel.easypermissions.EasyPermissions
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -30,6 +29,11 @@ class MainActivity : BaseActivity() {
     override fun initialize() {
         DaggerActivityComponent.builder().appComponent(App.appComponent).build().inject(this)
         commonModel.say()
+
+        Timber.d("debug")
+        Timber.i("info")
+        Timber.w("warn")
+        Timber.e("error")
     }
 
     override fun bindListener() {
@@ -38,54 +42,18 @@ class MainActivity : BaseActivity() {
         }
     }
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        val a = setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-//
-//        DaggerActivityComponent.create().inject(this)
-//        a.tv.setOnClickListener {
-//            cameraTask()
-//        }
-//    }
-
-    private fun hasCameraPermission(): Boolean {
-        if (!EasyPermissions.hasPermissions(this, Manifest.permission.CAMERA)) {
-            EasyPermissions.requestPermissions(
-                this,
-                "此应用需要使用相机权限",
-                Permission.RC_CAMERA_PERM,
-                Manifest.permission.CAMERA
-            )
-        }
-        return EasyPermissions.hasPermissions(this, Manifest.permission.CAMERA)
-    }
 
     @AfterPermissionGranted(Permission.RC_CAMERA_PERM)
     fun cameraTask() {
         if (hasCameraPermission()) {
-            // Have permission, do the thing!
             Toast.makeText(this, "TODO: Camera things", Toast.LENGTH_LONG).show()
         }
     }
 
-    @AfterPermissionGranted(Permission.RC_STORAGE_PERM)
+    //    @AfterPermissionGranted(Permission.RC_STORAGE_PERM)
     fun download() {
-        if (hasStoragePermission()) {
-            helper.download(this)
-        }
+        helper.download(this)
     }
 
-    private fun hasStoragePermission(): Boolean {
-        if (!EasyPermissions.hasPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            EasyPermissions.requestPermissions(
-                this,
-                "需要存储卡权限",
-                Permission.RC_STORAGE_PERM,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            )
-        }
-        return EasyPermissions.hasPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-    }
 
 }
